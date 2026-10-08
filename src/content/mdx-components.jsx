@@ -1,5 +1,3 @@
-'use client'
-
 import CustomLink from '@/app/components/custom-link'
 import Image from 'next/image'
 import clsx from 'clsx'
