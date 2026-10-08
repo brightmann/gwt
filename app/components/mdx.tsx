@@ -1,32 +1,23 @@
-import { useMDXComponent } from 'next-contentlayer/hooks'
-import CustomLink from './custom-link'
-import Image, { ImageProps } from 'next/image'
-import clsx from 'clsx'
-import PreviewProvider, { PhotoViewImage } from './blog/preview-photo'
-
-const components: any = {
-  a: CustomLink,
-  Image: (props: ImageProps) => (
-    <PhotoViewImage src={props.src.toString()}>
-      <Image
-        {...props}
-        alt={props.src.toString()}
-        className={clsx(props.className, 'rounded-lg cursor-pointer')}
-      />
-    </PhotoViewImage>
-  ),
-}
+import { notFound } from 'next/navigation'
+import PreviewProvider from './blog/preview-photo'
+import { getMdxComponent } from '@/src/content/compiled/registry'
 
 type MdxProps = {
-  readonly code: string
+  readonly slug: string
 }
 
-export default function Mdx({ code }: MdxProps) {
-  const Component = useMDXComponent(code)
+// Post bodies are precompiled at build time (scripts/compile-mdx.mjs) into
+// static components. next-contentlayer's useMDXComponent evaluates code with
+// new Function(), which is forbidden on Cloudflare Workers.
+export default function Mdx({ slug }: MdxProps) {
+  const Component = getMdxComponent(slug)
+  if (!Component) {
+    notFound()
+  }
   return (
     <article className="prose prose-stone dark:prose-invert">
       <PreviewProvider>
-        <Component components={components} />
+        <Component />
       </PreviewProvider>
     </article>
   )

@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import coding from 'public/coding.gif'
 import CustomLink from '../components/custom-link'
 
 export default function About() {
@@ -13,7 +12,7 @@ export default function About() {
         className="m-auto"
       />
       <Image
-        src={coding}
+        src="/coding.gif"
         alt="coding"
         width={480}
         height={260}

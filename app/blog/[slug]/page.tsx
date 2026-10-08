@@ -1,4 +1,4 @@
-import { allBlogs } from 'contentlayer/generated'
+import { allBlogs } from '@/src/content/blog-data'
 import { BlogCardHeader } from '@/app/components/blog/blog-card'
 import { notFound } from 'next/navigation'
 import Mdx from '@/app/components/mdx'
@@ -46,7 +46,7 @@ export default function BlogSlug({ params }: BlogSlugProps) {
   return (
     <section>
       <BlogCardHeader {...post} view={view} trackView />
-      <Mdx code={post.body.code} />
+      <Mdx slug={post.slug} />
       <Suspense fallback={'loading...'}>
         <aside
           className={clsx(

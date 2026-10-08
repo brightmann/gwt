@@ -1,4 +1,4 @@
-import { allBlogs } from 'contentlayer/generated'
+import { allBlogs } from '@/src/content/blog-data'
 import BlogCard from './components/blog/blog-card'
 import redis from '@/lib/redis'
 import { use } from 'react'

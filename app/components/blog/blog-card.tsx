@@ -1,4 +1,4 @@
-import { Blog } from 'contentlayer/generated'
+import { Blog } from '@/src/content/blog-data'
 import CustomLink from '../custom-link'
 import Balabcer from 'react-wrap-balancer'
 import { use } from 'react'
