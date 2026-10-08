@@ -47,6 +47,7 @@ const ContentSecurityPolicy = `
     style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
     media-src 'none';
+    frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com;
     connect-src *;
     font-src 'self' data:;
 `
